@@ -12,29 +12,46 @@ If you want to push an update or your name on the CSS, please consider donating 
 
 /*The URL below is used for automatically updating the CSS, DO NOT TOUCH IT*/
 
-@import url(https://whuuayu.github.io/magical-girl-css/yuki_aim.css);
+@import url(https://whuuayu.github.io/magical-girl-css/lesbianism.css);
 
 /*Customization Settings/設定*/
+
+/*Color Selection*/
 
 :root {
     --accent: #FF9BA6;
     --secondary: #FFF;
 }
 
-/*English Font*/
+/*Non-Premium Profile Picture*/
+
+#menuMiniProfilePic[src*="classes"] {
+    background-image: url(https://media.discordapp.net/attachments/622258375245430790/900229331102609468/ezgif.com-gif-maker.png);
+    background-size: 820px;
+    background-position: center -40px;
+}
+
+/*Healthbar Name*/
+
+#bottomLeftHolder::after {
+    content: "MADOKA";
+}
 
 /*Fonts*/
 
+/*English*/
 @font-face {
     font-family: gamefont;
     src: url(https://raw.githubusercontent.com/South-Paw/typeface-vag-rounded/master/files/vag-rounded-400.woff2);
 }
 
+/*Japanese/Chinese*/
 @font-face {
     font-family: JP;
     src: url(https://dl.dropboxusercontent.com/s/umq56c3rfoj0xqu/corp_round_v1.ttf?dl=0);
 }
 
+/*Display*/
 @font-face {
     font-family: display;
     src: url(./GD-MadoMaruGoJA-Rev001.otf);
