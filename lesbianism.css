@@ -908,8 +908,8 @@
 .classCard {
     background-color: transparent;
     filter: none;
-    width: 237px;
     text-shadow: none;
+    box-shadow: none;
 }
 
 .classXPBar {
