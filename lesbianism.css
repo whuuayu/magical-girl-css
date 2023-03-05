@@ -345,6 +345,10 @@
     padding: 0;
 }
 
+#mainLogoFace {
+    display: none;
+}
+
 #seasonLabel span {
     color: var(--secondary) !important;
 }
@@ -380,6 +384,10 @@
 
 .junkInfo, .krInfo {
     opacity: 0;
+}
+
+.mainJunkInfo {
+    display: none;
 }
 
 .menuSocialB, #editorBtnM, .verticalSeparator, .rankClck, .menuDebugInfo {
