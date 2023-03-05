@@ -586,6 +586,10 @@
     display: none;
 }
 
+.menuItem[onclick*="esports"] {
+    display: none;
+}
+
 .menBtnIcn {
     font-size: 40px !important;
     color: var(--secondary) !important;
@@ -1614,5 +1618,9 @@ input:checked+.slider {
 }
 
 #uiBase.onMenu #specGMessage {
+    display: none;
+}
+
+#uiBase.onMenu #specOverlay {
     display: none;
 }
