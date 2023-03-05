@@ -1,0 +1,1506 @@
+/*Section I: Globals*/
+
+* {
+    font-family: gamefont, JP;
+}
+
+#aHolder, .endAHolder, #tlInfHold, #newsHolder {
+    display: none !important;
+}
+
+#onetrust-consent-sdk {
+    display: none;
+}
+
+#infoHider {
+    display: none !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*Animations*/
+
+@keyframes reloading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/*Section II: Chat*/
+
+#uiBase.onMenu #chatHolder {
+    left: 20px;
+    bottom: 320px;
+    width: 276px;
+}
+
+#uiBase.onGame #chatHolder {
+    left: 320px;
+    bottom: 200px;
+    z-index: 99;
+}
+
+#chatList {
+    padding: 4px;
+    background-color: transparent;
+}
+
+#chatList::-webkit-scrollbar {
+    display: none;
+}
+
+#chatInputHolder {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+#chatSwitch {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    margin: 0;
+    font-size: 0;
+    transition-duration: 0.25s;
+}
+
+#chatInputHolder:hover #chatSwitch {
+    font-size: 36px;
+}
+
+#chatInput {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 0;
+    font-size: 0;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    border: none;
+    background-color: var(--accent);
+    border-radius: 12px;
+    transition-duration: 0.25s;
+}
+
+#chatInput:focus {
+    padding: 8px 12px;
+    padding-bottom: 12px;
+    font-size: 24px;
+}
+
+.chatItem {
+    font-size: 24px;
+    margin-left: 0;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+.chatMsg {
+    color: var(--secondary);
+}
+
+.chatMsg[style*="color"] {
+    color: var(--accent) !important;
+    text-shadow: var( --secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+}
+
+.chatMsg span {
+    color: var(--secondary) !important;
+}
+
+.chatMsg span[style="color:#eb5656"] {
+    color: var(--accent) !important;
+    text-shadow: var( --secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+}
+
+#voiceDisplay {
+    border: none;
+    background-color: transparent;
+}
+
+#voiceIcon.voiceOff {
+    font-size: 0 !important;
+}
+
+#recTimer {
+    display: none;
+}
+
+.weaponChatIcon {
+    margin-right: 12px !important;
+    margin-left: 12px;
+    transform: unset;
+    width: 28px;
+}
+
+.chatMsg img {
+    opacity: 1 !important;
+    filter: drop-shadow(2px 2px var(--accent)) drop-shadow(-2px -2px var(--accent)) drop-shadow(-2px 2px var(--accent)) drop-shadow(2px -2px var(--accent));
+}
+
+.weaponChatIcon[src*="icon_1"] {
+    content: url(https://api.iconify.design/mdi/target.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_2"] {
+    content: url(https://api.iconify.design/mdi/menu.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_3"], .weaponChatIcon[src*="icon_11"], .weaponChatIcon[src*="icon_17"] {
+    content: url(https://api.iconify.design/mdi/pistol.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_4"] {
+    content: url(https://api.iconify.design/mdi/chevron-triple-up.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_5"] {
+    content: url(https://api.iconify.design/mdi/dice-6.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_6"] {
+    content: url(https://api.iconify.design/mdi/dots-grid.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_7"] {
+    content: url(https://api.iconify.design/mdi/reorder-vertical.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_8"] {
+    content: url(https://api.iconify.design/mdi/bullseye.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_9"] {
+    content: url(https://api.iconify.design/mdi/rocket-launch.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_10"] {
+    content: url(https://api.iconify.design/mdi/scatter-plot.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_12"], .weaponChatIcon[src*="icon_13"] {
+    content: url(https://api.iconify.design/mdi/battery-high.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_14"] {
+    content: url(https://api.iconify.design/mdi/bow-arrow.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_15"] {
+    content: url(https://api.iconify.design/mdi/dots-vertical.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_16"] {
+    content: url(https://api.iconify.design/mdi/transfer-up.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_18"] {
+    content: url(https://api.iconify.design/mdi/bomb.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_19"] {
+    content: url(https://api.iconify.design/mdi/lightning-bolt.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_20"] {
+    content: url(https://api.iconify.design/mdi/hammer-wrench.svg?color=white);
+}
+
+.weaponChatIcon[src*="icon_22"] {
+    content: url(https://api.iconify.design/mdi/gun.svg?color=white);
+    background: url(https://api.iconify.design/mdi/magazine-pistol.svg?color=white&flip=horizontal);
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: 12px 8px;
+}
+
+.weaponChatIcon[src*="melee"] {
+    content: url(https://api.iconify.design/mdi/knife-military.svg?color=white) !important;
+}
+
+.fistChatIcon {
+    content: url(https://api.iconify.design/mdi/boxing-glove.svg?color=white) !important;
+    width: 28px;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+/*Section III: Main Menu*/
+
+#gameNameHolder {
+    top: 20px;
+    left: 20px;
+    transform: unset;
+    filter: drop-shadow(0 4px rgba(0,0,0,0.25));
+}
+
+#gameNameHolder::before {
+    content: "MAGICAL GIRL";
+    font-family: display;
+    font-size: 128px;
+    line-height: 108px;
+    width: 578px;
+    text-align: right;
+    color: var(--secondary);
+    text-shadow: var(--accent) 8px 0px 0px, var(--accent) 7.93758px 0.997398px 0px, var(--accent) 7.7513px 1.97923px 0px, var(--accent) 7.44406px 2.93018px 0px, var(--accent) 7.02066px 3.8354px 0px, var(--accent) 6.4877px 4.68078px 0px, var(--accent) 5.85351px 5.45311px 0px, var(--accent) 5.12798px 6.14035px 0px, var(--accent) 4.32242px 6.73177px 0px, var(--accent) 3.44941px 7.21814px 0px, var(--accent) 2.52258px 7.59188px 0px, var(--accent) 1.55638px 7.84714px 0px, var(--accent) 0.565898px 7.97996px 0px, var(--accent) -0.433417px 7.98825px 0px, var(--accent) -1.42597px 7.87189px 0px, var(--accent) -2.39627px 7.63269px 0px, var(--accent) -3.32917px 7.27438px 0px, var(--accent) -4.21013px 6.80256px 0px, var(--accent) -5.02539px 6.22459px 0px, var(--accent) -5.76223px 5.54948px 0px, var(--accent) -6.40915px 4.78778px 0px, var(--accent) -6.95606px 3.95136px 0px, var(--accent) -7.39442px 3.05329px 0px, var(--accent) -7.71739px 2.10757px 0px, var(--accent) -7.91994px 1.12896px 0px, var(--accent) -7.9989px 0.132735px 0px, var(--accent) -7.95304px -0.865561px 0px, var(--accent) -7.78307px -1.85035px 0px, var(--accent) -7.49165px -2.80627px 0px, var(--accent) -7.08333px -3.71839px 0px, var(--accent) -6.56448px -4.57249px 0px, var(--accent) -5.94318px -5.35524px 0px, var(--accent) -5.22915px -6.05442px 0px, var(--accent) -4.43352px -6.65912px 0px, var(--accent) -3.5687px -7.15992px 0px, var(--accent) -2.6482px -7.54898px 0px, var(--accent) -1.68637px -7.82024px 0px, var(--accent) -0.698222px -7.96947px 0px, var(--accent) 0.300817px -7.99434px 0px, var(--accent) 1.29516px -7.89446px 0px, var(--accent) 2.2693px -7.67139px 0px, var(--accent) 3.20802px -7.32862px 0px, var(--accent) 4.09668px -6.87148px 0px, var(--accent) 4.92142px -6.30711px 0px, var(--accent) 5.66936px -5.64432px 0px, var(--accent) 6.32883px -4.89346px 0px, var(--accent) 6.88954px -4.06623px 0px, var(--accent) 7.34274px -3.17556px 0px, var(--accent) 7.68136px -2.23532px 0px, var(--accent) 7.90012px -1.26021px 0px, var(--accent) 7.9956px -0.265434px 0px;
+}
+
+#gameNameHolder::after {
+    content: "魔法少女";
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    font-size: 64px;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    color: var(--secondary);
+}
+
+#mainLogo {
+    display: none;
+}
+
+#seasonLabel {
+    transform: unset;
+    z-index: 99;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    left: 20px;
+    top: 240px;
+    margin: 0;
+    padding: 0;
+}
+
+#seasonLabel span {
+    color: var(--secondary) !important;
+}
+
+#seasonLabel::before {
+    content: "auto_awesome";
+    font-family: 'Material Icons';
+    position: fixed;
+    left: 440px;
+    top: 40px;
+    font-size: 256px;
+    text-shadow: var(--accent) 8px 0px 0px, var(--accent) 7.93758px 0.997398px 0px, var(--accent) 7.7513px 1.97923px 0px, var(--accent) 7.44406px 2.93018px 0px, var(--accent) 7.02066px 3.8354px 0px, var(--accent) 6.4877px 4.68078px 0px, var(--accent) 5.85351px 5.45311px 0px, var(--accent) 5.12798px 6.14035px 0px, var(--accent) 4.32242px 6.73177px 0px, var(--accent) 3.44941px 7.21814px 0px, var(--accent) 2.52258px 7.59188px 0px, var(--accent) 1.55638px 7.84714px 0px, var(--accent) 0.565898px 7.97996px 0px, var(--accent) -0.433417px 7.98825px 0px, var(--accent) -1.42597px 7.87189px 0px, var(--accent) -2.39627px 7.63269px 0px, var(--accent) -3.32917px 7.27438px 0px, var(--accent) -4.21013px 6.80256px 0px, var(--accent) -5.02539px 6.22459px 0px, var(--accent) -5.76223px 5.54948px 0px, var(--accent) -6.40915px 4.78778px 0px, var(--accent) -6.95606px 3.95136px 0px, var(--accent) -7.39442px 3.05329px 0px, var(--accent) -7.71739px 2.10757px 0px, var(--accent) -7.91994px 1.12896px 0px, var(--accent) -7.9989px 0.132735px 0px, var(--accent) -7.95304px -0.865561px 0px, var(--accent) -7.78307px -1.85035px 0px, var(--accent) -7.49165px -2.80627px 0px, var(--accent) -7.08333px -3.71839px 0px, var(--accent) -6.56448px -4.57249px 0px, var(--accent) -5.94318px -5.35524px 0px, var(--accent) -5.22915px -6.05442px 0px, var(--accent) -4.43352px -6.65912px 0px, var(--accent) -3.5687px -7.15992px 0px, var(--accent) -2.6482px -7.54898px 0px, var(--accent) -1.68637px -7.82024px 0px, var(--accent) -0.698222px -7.96947px 0px, var(--accent) 0.300817px -7.99434px 0px, var(--accent) 1.29516px -7.89446px 0px, var(--accent) 2.2693px -7.67139px 0px, var(--accent) 3.20802px -7.32862px 0px, var(--accent) 4.09668px -6.87148px 0px, var(--accent) 4.92142px -6.30711px 0px, var(--accent) 5.66936px -5.64432px 0px, var(--accent) 6.32883px -4.89346px 0px, var(--accent) 6.88954px -4.06623px 0px, var(--accent) 7.34274px -3.17556px 0px, var(--accent) 7.68136px -2.23532px 0px, var(--accent) 7.90012px -1.26021px 0px, var(--accent) 7.9956px -0.265434px 0px;
+    transform: rotate3d(1, 2, -1, 45deg);
+}
+
+#instructions {
+    display: none;
+}
+
+#menuTimer {
+    display: none !important;
+}
+
+#LaFWaterMark {
+    display: none;
+}
+
+/*Headerbars*/
+
+.headerBar {
+    background-color: transparent;
+}
+
+.junkInfo, .krInfo {
+    opacity: 0;
+}
+
+.menuSocialB, #editorBtnM, .verticalSeparator, .rankClck, .menuDebugInfo {
+    display: none;
+}
+
+#mLevelCont {
+    background-color: transparent;
+}
+
+#menuRegionLabel {
+    position: fixed;
+    right: 82px;
+    top: 120px;
+    background-color: var(--accent);
+    padding: 8px 16px;
+    padding-top: 2px;
+    font-size: 32px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    border-radius: 12px 0 0 12px;
+    flex-direction: row;
+}
+
+#menuRegionLabel::after {
+    content: "location_on";
+    font-family: "Material Icons";
+    display: inline-block;
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    padding: 8px 16px;
+    padding-bottom: 10px;
+    background-color: var(--secondary);
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    border-radius: 0 12px 12px 0;
+}
+
+#uiBase.onMenu #specGameInfo {
+    font-size: 32px;
+    padding: 8px 16px;
+    padding-top: 2px;
+    top: 188px;
+    right: 20px;
+    position: fixed;
+    background-color: var(--accent);
+    color: var(--secondary);
+    text-shadow: none;
+    line-height: unset;
+    border-radius: 12px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+}
+
+#uiBase.onMenu #spectButton {
+    opacity: 0;
+}
+
+/*Profile*/
+
+#menuMiniProfilePic {
+    position: fixed;
+    margin: 0;
+    bottom: 20px;
+    left: 20px;
+    width: 258px;
+    height: 258px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    border: 8px solid var(--accent);
+    image-rendering: unset;
+}
+
+#menuMiniProfilePic[src*="classes"] {
+    content: linear-gradient(transparent, transparent);
+}
+
+#menuAccountUsername {
+    position: fixed;
+    left: 156px;
+    bottom: 48px;
+    font-size: 32px;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    transform: translateX(-50%);
+    max-width: 8em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 2;
+}
+
+#menuLvlHold {
+    position: fixed;
+    width: 272px;
+    height: 272px;
+    padding: 0;
+    bottom: 20px;
+    left: 20px;
+    transform: rotate(-90deg);
+    border-radius: 50%;
+    background-color: transparent;
+    opacity: 1;
+    pointer-events: none;
+}
+
+#mailContainer {
+    position: fixed;
+    left: 156px;
+    bottom: 6px;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0;
+    transition: 0.25s;
+}
+
+#signedInHeaderBar:hover #mailContainer {
+    opacity: 1;
+}
+
+#mailIcon {
+    font-size: 32px !important;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#mailCount {
+    border-color: var(--accent);
+    border-width: 4px;
+    background-color: var(--secondary);
+    height: 8px;
+    width: 8px;
+    right: -4px;
+    top: 0;
+    font-size: 0;
+}
+
+#menuLevelBar {
+    clip-path: circle(134px at 136px 136px);
+    background-image: none;
+    background-color: var(--secondary);
+    -webkit-mask-image: radial-gradient(circle at 136px 136px, transparent 0, transparent 124px, var(--secondary) 124px, var(--secondary) 130px, transparent 132px);
+}
+
+#mLevelContV {
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    position: fixed;
+    left: 156px;
+    bottom: 12px;
+    transform: translateX(-50%);
+    line-height: unset;
+    font-size: 24px;
+}
+
+#mLevelContV::before {
+    content: "star";
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    font-size: 48px;
+    z-index: -1;
+}
+
+#menuItemContainer::after {
+    position: fixed;
+    content: "》";
+    line-height: 120px;
+    pointer-events: all;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#menuItemContainer {
+    flex-direction: row;
+    top: unset;
+    bottom: 88px;
+    left: 320px;
+    width: 0%;
+    height: 120px;
+    z-index: 11;
+    overflow: hidden;
+    color: var(--secondary);
+    font-size: 48px;
+    transition-duration: 0.5s;
+    background-color: transparent !important;
+    pointer-events: all;
+}
+
+#menuItemContainer:hover {
+    color: transparent;
+    width: 760px;
+    font-size: 0px;
+}
+
+.menuItem {
+    flex-direction: row;
+    justify-content: center;
+    flex-grow: unset;
+    margin: 0 20px;
+}
+
+.menuItem:first-child {
+    margin-left: 40px;
+}
+
+.menuItem .menuItemTitle {
+    display: none;
+}
+
+.menBtnIcn {
+    font-size: 40px !important;
+    color: var(--secondary) !important;
+    z-index: 2;
+    line-height: unset !important;
+    font-family: 'Material Icons' !important;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: var(--accent);
+}
+
+.menuItem .iconExit {
+    background-image: none;
+    width: auto !important;
+    height: auto !important;
+}
+
+.lgn {
+    position: fixed;
+    width: 258px !important;
+    height: 258px;
+    border: 8px solid var(--accent) !important;
+    border-radius: 50%;
+    padding: 0 !important;
+    margin: 0 !important;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--accent);
+    line-height: 258px
+}
+
+.lgn:hover {
+    border-width: 8px !important;
+}
+
+#subLogoButtons {
+    display: flex;
+    background-color: var(--accent);
+    border-radius: 48px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    transition-duration: 0.5s;
+    pointer-events: all;
+    transform: unset;
+    left: unset;
+    right: 20px;
+    bottom: 20px;
+    font-size: 0;
+}
+
+#subLogoButtons:hover {
+    width: 480px;
+    padding-bottom: 4px;
+    border-radius: 16px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    font-size: 36px;
+}
+
+#rankedSoonTm {
+    display: none;
+}
+
+#subLogoButtons::before {
+    content: "build";
+    font-family: 'Material Icons';
+    font-size: 48px;
+    color: var(--secondary);
+    padding: 16px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+#subLogoButtons::after {
+    content: "SERVER";
+    font-family: display;
+    position: fixed;
+    bottom: 20px;
+    right: 56px;
+    color: var(--secondary);
+    display: block;
+    line-height: 0;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#subLogoButtons>.button {
+    border: none !important;
+    background-color: transparent;
+    padding: 16px 16px !important;
+    font-size: 0 !important;
+    border-radius: 50%;
+    margin: 0;
+    line-height: unset;
+    height: unset;
+}
+
+#subLogoButtons>.button::after {
+    font-size: 48px;
+    font-family: 'Material Icons';
+}
+
+#menuBtnHost::after {
+    content: "add";
+}
+
+#menuBtnBrowser::after {
+    content: "search";
+}
+
+#faceItIconM {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+}
+
+#inviteButton::after {
+    content: "link";
+}
+
+#menuBtnJoin::after {
+    content: "person_add";
+}
+
+#menuClassContainer {
+    transform: unset;
+    z-index: -1 !important;
+}
+
+#customizeButton {
+    position: fixed;
+    bottom: 20px;
+    right: 144px;
+    margin: 0;
+    border: none !important;
+    text-shadow: none !important;
+    font-size: 0 !important;
+    background-color: var(--accent);
+    width: 48px;
+    height: 48px;
+    padding: 16px !important;
+    border-radius: 48px;
+}
+
+
+#customizeButton .material-icons {
+    margin: 0 !important;
+    vertical-align: unset !important;
+    font-size: 48px !important;
+    line-height: 48px;
+}
+
+#menuClassNameTag {
+    display: none;
+}
+
+#classPreviewCanvas {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+#menuClassName, #menuClassSubtext {
+    display: none;
+}
+
+/*Menu Window*/
+
+#windowHolder {
+    display: block !important;
+}
+
+#windowHolder {
+    display: block !important;
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+
+#windowHolder[style*="block"] {
+    opacity: 1;
+}
+
+#windowHolder[style*="none"] * {
+    pointer-events: none;
+}
+
+#menuWindow {
+    background-color: var(--accent) !important;
+    border-radius: 24px;
+    z-index: 12;
+}
+
+#menuWindow.dark div {
+    color: var(--secondary);
+}
+
+.setHed {
+    border: none;
+    background-color: transparent !important;
+    color: var(--accent) !important;
+    text-shadow: var(--secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+    font-size: 48px;
+    filter: drop-shadow(0px 4px rgba(0,0,0,0.25));
+}
+
+.setHed * {
+    color: var(--accent) !important;
+}
+
+.setBodH {
+    background-color: transparent;
+}
+
+.settName {
+    font-size: 32px;
+    color: var(--secondary) !important;
+}
+
+.pSt {
+    font-size: 24px;
+    width: 183px;
+    border: none;
+    background-color: transparent;
+    color: var(--secondary) !important;
+    text-shadow: none !important;
+}
+
+.pSt strong {
+    font-size: 24px;
+    color: var(--accent);
+    text-shadow: var(--secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+}
+
+.xpBar {
+    border-radius: 12px;
+    background-color: rgba(0,0,0,0.25);
+    padding: 0;
+}
+
+.xpBarB {
+    background-image: none;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.xpBarV {
+    color: var(--accent);
+    text-shadow: none;
+    font-size: 28px;
+    top: 0;
+}
+
+#menuWindow a {
+    color: var(--secondary);
+}
+
+.bigMenTabs {
+    border-radius: 12px;
+    background-color: transparent;
+}
+
+.bigMenTab {
+    border: none !important;
+    padding: 12px 16px;
+}
+
+.bigMenTab, .bigMenTab span {
+    color: var(--secondary) !important;
+}
+
+.bigMenTabA, .bigMenTabA span {
+    color: var(--accent) !important;
+    text-shadow: var(--secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+}
+
+.bigMenTab[style*="16px"] {
+    font-size: 28px !important;
+}
+
+/*Loadout*/
+
+#selectorContainer {
+    display: inline-flex;
+    width: calc(100% + 40px);
+    height: fit-content;
+    z-index: 2;
+    background-color: var(--accent);
+    justify-content: center;
+}
+
+.selectorItem {
+    left: unset;
+    transform: inherit;
+    border: none !important;
+    background-color: transparent;
+    height: 48px;
+    width: inherit;
+}
+
+.selectorItem:hover {
+    background-color: transparent;
+}
+
+.selectorItem .selectorIcon {
+    display: none;
+}
+
+.selectorLabel {
+    text-shadow: none;
+    font-size: 32px;
+}
+
+#customizeContainer {
+    float: unset;
+    width: 100%;
+}
+
+.classCard {
+    background-color: transparent;
+    filter: none;
+    width: 237px;
+    text-shadow: none;
+}
+
+.classXPBar {
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.25);
+    width: 237px;
+}
+
+.clsXPBarC {
+    margin: 0;
+    height: 26px;
+    border-radius: 8px;
+    background-color: var(--secondary);
+}
+
+/*Servers*/
+
+.quickJoin {
+    border: none;
+    margin-top: 0;
+    position: relative;
+    top: 12px;
+    font-size: 20px;
+    text-shadow: none;
+    color: var(--secondary) !important;
+}
+
+/*Map Host*/
+
+#stickyHostH, .hostHeader {
+    background-color: var(--accent);
+    box-shadow: none;
+    border-color: var(--secondary);
+}
+
+/*Settings*/
+
+.settingsHeader, .serverHeader, #bindsHeader {
+    background-color: var(--accent) !important;
+}
+
+#settSearch {
+    background-color: transparent;
+    color: var(--secondary);
+    font-size: 20px;
+}
+
+#settSearch::placeholder {
+    color: var(--secondary);
+}
+
+.settingsBtn, .loadoutBtn {
+    background-color: var(--secondary) !important;
+    color: var(--accent) !important;
+    border-radius: 12px;
+    box-shadow: 0 2px rgba(0,0,0,0.25);
+    padding: 8px;
+}
+
+#settingsTabLayout {
+    background-color: var(--secondary);
+    border-radius: 12px;
+    box-shadow: 0 4px rgba(0,0,0,0.25);
+}
+
+.settingTab {
+    background-color: transparent !important;
+    color: var(--accent) !important;
+}
+
+.settingTab, .settingTab:hover, .dark .tabANew:hover {
+    border-width: 0 !important;
+    padding: 16px;
+}
+
+#requiresRestart {
+    display: none;
+}
+
+.plusOrMinus {
+    color: var(--accent) !important;
+}
+
+.setSugBox2 {
+    display: none;
+}
+
+.inputGrey, .inputGrey2 {
+    background-color: var(--secondary);
+    color: var(--accent);
+    border-radius: 12px;
+    box-shadow: 0 2px rgba(0,0,0,0.25);
+    padding: 8px;
+}
+
+.sliderVal {
+    background-color: var(--secondary);
+    color: var(--accent);
+    border: none !important;
+    line-height: unset;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 2px rgba(0,0,0,0.25);
+}
+
+.sliderM {
+    height: 8px;
+    background-color: var(--secondary);
+}
+
+.switch {
+    width: 34px;
+}
+
+.slider {
+    border-radius: 50%;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 4px var(--secondary);
+    top: 0;
+}
+
+input:checked+.slider {
+    background-color: var(--secondary);
+}
+
+.slider:before {
+    display: none;
+}
+
+/*Section IV: HUD*/
+
+#bottomLeftHolder::before {
+    content: " ";
+    background-color: var(--accent);
+    -webkit-mask-image: url(https://media.discordapp.net/attachments/622258375245430790/900229331102609468/ezgif.com-gif-maker.png);
+    -webkit-mask-size: 840px;
+    -webkit-mask-position: calc(50% - 110px) top;
+    display: block;
+    width: 540px;
+    height: 280px;
+    margin: 0;
+    margin-bottom: -1px;
+}
+
+#bottomLeftHolder::after {
+    text-transform: uppercase;
+    font-family: display;
+    font-size: 64px;
+    position: fixed;
+    left: 44px;
+    bottom: 100px;
+    color: var(--secondary);
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#hudClassIcon {
+    display: none;
+}
+
+#hudClassIcon~div {
+    background-color: var(--accent);
+    padding: 12px 24px;
+    padding-bottom: 16px;
+    border-radius: 16px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    display: inline-flex !important;
+}
+
+#hudClassIcon~div::before {
+    content: "HP";
+    font-family: display;
+    font-size: 64px;
+    line-height: 50px;
+    color: var(--accent);
+    margin-right: 24px;
+    text-shadow: var(--secondary) 4px 0px 0px, var(--secondary) 3.87565px 0.989616px 0px, var(--secondary) 3.51033px 1.9177px 0px, var(--secondary) 2.92676px 2.72656px 0px, var(--secondary) 2.16121px 3.36588px 0px, var(--secondary) 1.26129px 3.79594px 0px, var(--secondary) 0.282949px 3.98998px 0px, var(--secondary) -0.712984px 3.93594px 0px, var(--secondary) -1.66459px 3.63719px 0px, var(--secondary) -2.51269px 3.11229px 0px, var(--secondary) -3.20457px 2.39389px 0px, var(--secondary) -3.69721px 1.52664px 0px, var(--secondary) -3.95997px 0.56448px 0px, var(--secondary) -3.97652px -0.432781px 0px, var(--secondary) -3.74583px -1.40313px 0px, var(--secondary) -3.28224px -2.28625px 0px, var(--secondary) -2.61457px -3.02721px 0px, var(--secondary) -1.78435px -3.57996px 0px, var(--secondary) -0.843183px -3.91012px 0px, var(--secondary) 0.150409px -3.99717px 0px, var(--secondary) 1.13465px -3.8357px 0px, var(--secondary) 2.04834px -3.43574px 0px, var(--secondary) 2.83468px -2.82216px 0px, var(--secondary) 3.44477px -2.03312px 0px, var(--secondary) 3.84068px -1.11766px 0px, var(--secondary) 3.9978px -0.132717px 0px;
+    filter: drop-shadow(0px 4px 0px rgba(0,0,0,0.25));
+}
+
+#healthBar {
+    display: inline-flex;
+    width: 400px;
+    height: 48px;
+    background-color: rgba(0,0,0,0.35);
+    border-radius: 12px;
+}
+
+.healthBarSeg {
+    background-color: transparent;
+    margin: 0 -1px;
+    border-radius: 0;
+    width: -webkit-fill-available;
+}
+
+.hpBSeg {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.healthBarSeg:first-child, .healthBarSeg:first-child .hpBSeg {
+    border-radius: 12px 0 0 12px;
+}
+
+.healthBarSeg:last-child, .healthBarSeg:last-child .hpBSeg {
+    border-radius: 0 12px 12px 0;
+}
+
+.hpBSeg {
+    background-color: var(--secondary) !important;
+}
+
+#healthValueHolder {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    bottom: 28px;
+    left: 144px;
+    background-color: transparent;
+    z-index: 4;
+}
+
+#healthValue {
+    font-size: 24px;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#maxHP, #challIcon {
+    display: none;
+}
+
+#teamName {
+    display: none;
+}
+
+#ammoDisplay {
+    transform: unset;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    left: calc(50% - 24px);
+    bottom: calc(50% - 160px);
+    width: 48px;
+    height: 48px;
+    background-image: none;
+    color: var(--secondary);
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#ammoDisplay[style="background-size: 0%; display: inline-block;"] {
+    color: transparent;
+    text-shadow: none;
+}
+
+#ammoDisplay[style="background-size: 0%; display: inline-block;"] #ammoMax {
+    color: transparent;
+    text-shadow: none;
+    font-size: 0;
+    color: transparent;
+    text-shadow: none;
+    animation: none;
+}
+
+#ammoMax {
+    color: transparent;
+    text-shadow: none;
+    font-size: 0;
+    color: var(--secondary);
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+    animation: reloading 1s linear infinite;
+}
+
+#ammoMax::before {
+    content: "cached";
+    font-family: 'Material Icons';
+    font-size: 48px;
+}
+
+#ammoVal {
+    position: fixed;
+    left: 680px;
+    font-size: 64px;
+    bottom: 30px;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#ammoIcon {
+    display: none;
+}
+
+#reloadMsg {
+    bottom: 46px;
+    line-height: unset;
+    background-color: transparent;
+    border: none;
+    color: var(--secondary);
+    font-size: 0;
+    font-family: 'Material Icons';
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#reloadMsg::after {
+    content: "warning";
+    font-size: 48px;
+}
+
+.weapItem {
+    margin: 0;
+}
+
+.weapIcon {
+    margin: 0 !important;
+    height: 48px;
+    width: 48px;
+    position: fixed;
+    left: 600px;
+    bottom: 44px;
+    filter: drop-shadow(2px 2px var(--accent)) drop-shadow(-2px -2px var(--accent)) drop-shadow(-2px 2px var(--accent)) drop-shadow(2px -2px var(--accent));
+}
+
+.weapKey {
+    display: none;
+}
+
+.weapIcon[style*=".7"] {
+    opacity: 0 !important;
+}
+
+.weapIcon[src*="icon_1"] {
+    content: url(https://api.iconify.design/mdi/target.svg?color=white);
+}
+
+.weapIcon[src*="icon_2"] {
+    content: url(https://api.iconify.design/mdi/menu.svg?color=white);
+}
+
+.weapIcon[src*="icon_3"], .weapIcon[src*="icon_11"], .weapIcon[src*="icon_17"] {
+    content: url(https://api.iconify.design/mdi/pistol.svg?color=white);
+}
+
+.weapIcon[src*="icon_4"] {
+    content: url(https://api.iconify.design/mdi/chevron-triple-up.svg?color=white);
+}
+
+.weapIcon[src*="icon_5"] {
+    content: url(https://api.iconify.design/mdi/dice-6.svg?color=white);
+}
+
+.weapIcon[src*="icon_6"] {
+    content: url(https://api.iconify.design/mdi/dots-grid.svg?color=white);
+}
+
+.weapIcon[src*="icon_7"] {
+    content: url(https://api.iconify.design/mdi/reorder-vertical.svg?color=white);
+}
+
+.weapIcon[src*="icon_8"] {
+    content: url(https://api.iconify.design/mdi/bullseye.svg?color=white);
+}
+
+.weapIcon[src*="icon_9"] {
+    content: url(https://api.iconify.design/mdi/rocket-launch.svg?color=white);
+}
+
+.weapIcon[src*="icon_10"] {
+    content: url(https://api.iconify.design/mdi/scatter-plot.svg?color=white);
+}
+
+.weapIcon[src*="icon_12"], .weapIcon[src*="icon_13"] {
+    content: url(https://api.iconify.design/mdi/battery-high.svg?color=white);
+}
+
+.weapIcon[src*="icon_14"] {
+    content: url(https://api.iconify.design/mdi/bow-arrow.svg?color=white);
+}
+
+.weapIcon[src*="icon_15"] {
+    content: url(https://api.iconify.design/mdi/dots-vertical.svg?color=white);
+}
+
+.weapIcon[src*="icon_16"] {
+    content: url(https://api.iconify.design/mdi/transfer-up.svg?color=white);
+}
+
+.weapIcon[src*="icon_18"] {
+    content: url(https://api.iconify.design/mdi/bomb.svg?color=white);
+}
+
+.weapIcon[src*="icon_19"] {
+    content: url(https://api.iconify.design/mdi/lightning-bolt.svg?color=white);
+}
+
+.weapIcon[src*="icon_20"] {
+    content: url(https://api.iconify.design/mdi/hammer-wrench.svg?color=white);
+}
+
+.weapIcon[src*="icon_22"] {
+    content: url(https://api.iconify.design/mdi/gun.svg?color=white);
+    background: url(https://api.iconify.design/mdi/magazine-pistol.svg?color=white&flip=horizontal);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: 20px 12px;
+}
+
+#weapIconMel {
+    content: url(https://api.iconify.design/mdi/knife-military.svg?color=white) !important;
+}
+
+#weapIconMel[src*="weapons/icon_0"] {
+    content: url(https://api.iconify.design/mdi/boxing-glove.svg?color=white) !important;
+}
+
+#leaderDisplay {
+    width: 400px;
+    padding: 0;
+    background-color: transparent;
+}
+
+.leaderItem {
+    font-size: 28px;
+    text-shadow: 0 4px rgba(0,0,0,0.25);
+    background-color: var(--accent);
+    margin-bottom: -1px;
+}
+
+.leaderItem:first-child {
+    margin-bottom: 8px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    border-radius: 12px !important;
+}
+
+.leaderItem:nth-child(2) {
+    border-radius: 12px 12px 0 0;
+}
+
+.leaderItem:last-child {
+    border-radius: 0 0 12px 12px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+}
+
+.leaderItem .material-icons {
+    padding: 8px 0;
+    margin-right: 8px;
+}
+
+.leaderCounter {
+    color: var(--secondary);
+    padding: 8px 16px;
+    padding-right: 0;
+    padding-bottom: 12px;
+}
+
+.leaderName, .leaderNameM, .leaderNameF {
+    padding: 8px 0;
+    color: var(--secondary);
+}
+
+.leaderName::after {
+    content: "mood_bad";
+    font-family: 'Material Icons';
+    position: relative;
+    top: 4px;
+    left: 8px;
+}
+
+.leaderNameF::after {
+    content: "mood";
+    font-family: 'Material Icons';
+    position: relative;
+    top: 4px;
+    left: 8px;
+}
+
+.leaderItem:first-child {
+    margin-bottom: 8px;
+}
+
+.leaderScore {
+    padding: 8px 16px;
+    color: var(--secondary);
+}
+
+.leaderItem:first-child .leaderScore {
+    background-color: var(--secondary);
+    border-radius: 0 12px 12px 0;
+    color: var(--accent);
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    padding-bottom: 12px;
+}
+
+.leaderItem .material-icons {
+    padding: 8px 0;
+    margin-right: 8px;
+    color: var(--secondary) !important;
+}
+
+.topRightCounters {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content !important;
+}
+
+.topRightCounters::before {
+    content: " ";
+    width: calc(100% - 180px);
+    height: 12px;
+    position: absolute;
+    bottom: 1px;
+    right: 180px;
+    border-radius: 6px;
+    background-color: var(--accent);
+    box-shadow: inset 0 -3px rgba(0,0,0,0.25);
+}
+
+.topRightCounters::after {
+    content: "STATS";
+    font-family: display;
+    color: var(--secondary);
+    font-size: 48px;
+    display: inline-block;
+    padding: 8px 16px;
+    padding-left: 40px;
+    background-color: var(--accent);
+    border-radius: 0 16px 16px 0;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    clip-path: polygon(32px 0%, 100% 0%, 100% 100%, 0% 100%);
+    text-shadow: 0 4px rgba(0,0,0,0.25);
+}
+
+.countIcon {
+    margin: 0;
+    font-size: 28px;
+    position: relative;
+    background-color: transparent;
+    top: 4px;
+    margin-bottom: 24px;
+}
+
+.countIcon[style*="block"] {
+    display: inline-flex !important;
+    align-items: center;
+}
+
+#killsVal, #deathsVal, #streakVal, #myScoreVal, #kdVal {
+    color: var(--secondary);
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#killsIcon, #deathsIcon, #streakIcon, #kdIcon {
+    filter: drop-shadow(2px 2px var(--accent)) drop-shadow(-2px -2px var(--accent)) drop-shadow(-2px 2px var(--accent)) drop-shadow(2px -2px var(--accent));
+    margin-right: 16px;
+}
+
+#killsIcon {
+    content: url(https://api.iconify.design/mdi/skull-scan.svg?color=white);
+}
+
+#deathsIcon {
+    content: url(https://api.iconify.design/mdi/skull.svg?color=white);
+}
+
+#streakIcon {
+    content: url(https://api.iconify.design/mdi/account-group.svg?color=white);
+}
+
+#kdIcon {
+    content: url(https://api.iconify.design/mdi/percent.svg?color=white);
+}
+
+.countIcon .material-icons {
+    margin-right: 16px;
+    color: var(--secondary) !important;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#livesDisp {
+    color: var(--secondary) !important;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#timerIcon {
+    display: none;
+}
+
+#timerDisplay {
+    background-color: var(--accent);
+    border-radius: 16px;
+    padding: 8px 16px;
+    padding-top: 0px;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+}
+
+#timerVal {
+    font-size: 54px;
+    text-shadow: 0 4px rgba(0,0,0,0.25);
+}
+
+#curGameInfo {
+    position: relative;
+    bottom: 28px;
+    left: 20px;
+    font-size: 20px;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#curGameInfo div {
+    display: none;
+}
+
+.debugInfo * {
+    color: var(--secondary) !important;
+    text-shadow: var(--accent) 4px 0px 0px, var(--accent) 3.87565px 0.989616px 0px, var(--accent) 3.51033px 1.9177px 0px, var(--accent) 2.92676px 2.72656px 0px, var(--accent) 2.16121px 3.36588px 0px, var(--accent) 1.26129px 3.79594px 0px, var(--accent) 0.282949px 3.98998px 0px, var(--accent) -0.712984px 3.93594px 0px, var(--accent) -1.66459px 3.63719px 0px, var(--accent) -2.51269px 3.11229px 0px, var(--accent) -3.20457px 2.39389px 0px, var(--accent) -3.69721px 1.52664px 0px, var(--accent) -3.95997px 0.56448px 0px, var(--accent) -3.97652px -0.432781px 0px, var(--accent) -3.74583px -1.40313px 0px, var(--accent) -3.28224px -2.28625px 0px, var(--accent) -2.61457px -3.02721px 0px, var(--accent) -1.78435px -3.57996px 0px, var(--accent) -0.843183px -3.91012px 0px, var(--accent) 0.150409px -3.99717px 0px, var(--accent) 1.13465px -3.8357px 0px, var(--accent) 2.04834px -3.43574px 0px, var(--accent) 2.83468px -2.82216px 0px, var(--accent) 3.44477px -2.03312px 0px, var(--accent) 3.84068px -1.11766px 0px, var(--accent) 3.9978px -0.132717px 0px;
+}
+
+#pingIcon {
+    font-size: 22px !important;
+}
+
+/*Section V: Spectate UI*/
+
+#uiBase.onMenu #spectateUI {
+    display: block !important;
+    z-index: 99;
+    position: relative;
+    text-align: right;
+}
+
+#uiBase.onMenu #spectateHUD {
+    left: unset;
+    right: 20px;
+    transform: inherit;
+    position: fixed;
+}
+
+#uiBase.onMenu .spectateInfo {
+    margin: 0;
+}
+
+#uiBase.onMenu #specKPDContr, #uiBase.onMenu #specContr, #uiBase.onMenu #spec0, #uiBase.onMenu #spec1 {
+    display: none !important;
+}
+
+#uiBase.onMenu #specTeam0, #uiBase.onMenu #specTeam1 {
+    display: none;
+}
+
+#uiBase.onMenu #specNames {
+    display: none !important;
+}
+
+#uiBase.onMenu #specTimer {
+    min-width: unset;
+    border-radius: 16px;
+    font-size: 64px;
+    padding: 24px;
+    padding-top: 18px;
+    background-color: var(--accent);
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    text-shadow: 0 4px rgba(0,0,0,0.25);
+}
+
+#uiBase.onMenu #specGMessage {
+    display: none;
+}
