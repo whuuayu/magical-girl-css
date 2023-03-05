@@ -965,6 +965,10 @@ input:checked+.optCheck {
     font-size: 16px;
 }
 
+.hostToggle {
+    background-color: transparent;
+}
+
 /*Settings*/
 
 .settingsHeader, .serverHeader, #bindsHeader {
