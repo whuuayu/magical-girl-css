@@ -31,6 +31,79 @@
     }
 }
 
+/*Loading Screen*/
+
+#initLoader {
+    background-color: var(--accent);
+}
+
+#loadEditrBtn {
+    display: none;
+}
+
+#loadTipsHolder {
+    bottom: unset;
+    top: 128px;
+    width: unset;
+    font-size: 0;
+}
+
+#loadTipsHolder::before {
+    content: "MAGICAL GIRL";
+    font-size: 128px;
+    font-family: display;
+    color: var(--secondary);
+    letter-spacing: -5px;
+}
+
+#loadTipsHolder::after {
+    content: "a css by tae";
+    font-family: gamefont, JP;
+    font-size: 32px;
+    color: var(--secondary);
+    position: absolute;
+    right: 0px;
+    bottom: -16px;
+}
+
+#loadTipsHolder span {
+    display: none;
+}
+
+#loadGamNm {
+    font-size: 32px;
+    color: var(--secondary);
+}
+
+#loadGamNm::after {
+    content: "Thank You: Luke, KeenKosh, ThiccRice, Leo, SwitchAimer, & Reizu 💕";
+    display: block;
+}
+
+.lC-cube {
+    display: none;
+}
+
+#loadInfoLHolder {
+    font-size: 0;
+    color: var(--secondary);
+}
+
+#loadInfoLHolder::before {
+    content: "Last Updated 2021-11-24";
+    font-size: 32px;
+}
+
+#loadInfoRHolder {
+    font-size: 0;
+    color: var(--secondary);
+}
+
+#loadInfoRHolder::before {
+    content: "IGN: びこ ・ twitter: @whuuayu";
+    font-size: 32px;
+}
+
 /*Section II: Chat*/
 
 #uiBase.onMenu #chatHolder {
@@ -996,7 +1069,7 @@ input:checked+.slider {
     display: none;
 }
 
-#hudClassIcon~div {
+#hudClassIcon~div:not(#zPerksHolder) {
     background-color: var(--accent);
     padding: 12px 24px;
     padding-bottom: 16px;
@@ -1005,7 +1078,7 @@ input:checked+.slider {
     display: inline-flex !important;
 }
 
-#hudClassIcon~div::before {
+#hudClassIcon~div:not(#zPerksHolder)::before {
     content: "HP";
     font-family: display;
     font-size: 64px;
