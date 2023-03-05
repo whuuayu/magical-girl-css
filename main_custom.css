@@ -54,7 +54,7 @@ If you want to push an update or your name on the CSS, please consider donating 
 /*Display*/
 @font-face {
     font-family: display;
-    src: url(./GD-MadoMaruGoJA-Rev001.otf);
+    src: url(https://raw.githubusercontent.com/whuuayu/magical-girl-css/main/GD-MadoMaruGoJA-Rev001.otf);
 }
 
 /*Make Edits Below*/
