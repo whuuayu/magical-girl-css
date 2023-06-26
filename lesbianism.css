@@ -8,6 +8,10 @@
     display: none !important;
 }
 
+#streamContainer {
+    display: none;
+}
+
 #onetrust-consent-sdk {
     display: none;
 }
@@ -1630,5 +1634,9 @@ input:checked+.slider {
 }
 
 #uiBase.onMenu #specOverlay {
+    display: none;
+}
+
+#uiBase.onMenu #specMapOverlay {
     display: none;
 }
