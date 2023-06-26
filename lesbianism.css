@@ -661,6 +661,10 @@
     font-size: 36px;
 }
 
+#mapInfoHld {
+    display: none;
+}
+
 #rankedSoonTm {
     display: none;
 }
