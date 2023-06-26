@@ -1,10 +1,9 @@
 # Magical Girl
 A Krunker UI Theme by tae. 
 
-## Update 2023-03-05
+## Update 2023-06-26
 
-- Made this public because I can
-- Previous owners of this theme are now immortalized in the loading screen and change log
+- Season 7 Hotfix
 
 ## License
 
